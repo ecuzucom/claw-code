@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+alerting:
+  alertmanagers: []
+
+rule_files: []
+
+scrape_configs:
+  - job_name: 'integrated-agent'
+    static_configs:
+      - targets: ['integrated-agent:18792']
+    metrics_path: /metrics
+    scrape_interval: 10s
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+
+  - job_name: 'chroma'
+    static_configs:
+      - targets: ['chroma:8000']
